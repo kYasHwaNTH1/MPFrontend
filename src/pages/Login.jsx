@@ -3,12 +3,13 @@ import {useGoogleLogin} from '@react-oauth/google'
 import axios from 'axios'
 
 
+
 const Login = () => {
 
   const responseGoogle = async (response) => {
     try {
         console.log("Google Login Response:", response);
-        const result = await axios.get(`${process.env.BACKEND_URL}?code=${response.code}`);
+        const result = await axios.get(`http://localhost:8080/auth/google?code=${response.code}`);
         console.log("Backend Response:", result.data);
     } catch (error) {
         console.error("Google OAuth Error:", error);
